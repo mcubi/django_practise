@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static tailwind_tags %} {% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <title>{% block title %} Homepage {% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/icon" />
+    <script src="{% static 'js/main.js' %}"></script>
+    {% tailwind_css %}
+  </head>
+  <body
+    class=".container bg-white items-center dark:bg-slate-950 text-orange-500 dark:text-blue-400"
+  >
+    <header>
+      <nav class="bg-orange-500 text-white flex space-x-6 py-1">
+        <ul class="flex flex-row space-x-6 px-2">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'people:home'%}">Services</a></li>
+        </ul>
+      </nav>
+    </header>
+    {% block listing %}
+    <div class="flex flex-col items-center space-x-6 p-10">
+      <h1 class="text-shadow-lg text-5xl font-bold">
+        {% block introduction %} WELCOME TO MY PAGE {% endblock %}
+      </h1>
+    </div>
+    <div>
+      <figure
+        class="flex flex-col items-center space-x-6 rounded-lg rounded-lg"
+      >
+        <figcaption class="pb-12 font-bold">
+          We're on vacation till next django exercise!
+        </figcaption>
+        <img
+          src="{% static 'images/ala.png' %}"
+          alt="beach image"
+          class="opacity-85"
+        />
+      </figure>
+    </div>
+    
+    <footer class="p-4 font-bold">
+      <h2 class="py-5">CONTACT:</h2>
+      <ul class=>
+        <li>
+          <a class="underline"
+            href="https://bradleykirton.com/2023/05/23/dynamic-background-images-with-django-and-tailwindcss/" target="_blank" rel="noopener noreferrer"
+          >
+            Q1.com</a
+          >
+        </li>
+        <li class="underline"><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" ></a>Tailwind.com</li>
+        <li class="underline">
+          <a href="https://docs.djangoproject.com/en/5.2/" target="_blank" rel="noopener noreferrer">Django documents</a>
+        </li>
+        <li class="underline"><a href="https://tailwindcss.com/docs/text-decoration-line" target="_blank" rel="noopener noreferrer">Tailwind help</a></li>
+      </ul>
+    </footer>
+    {% endblock %}
+  </body>
+</html>

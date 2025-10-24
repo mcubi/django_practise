@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "basicaltemplate.html" %} {% block title %} Services {% endblock %}
+{% block introduction %} Avaiable Services {% endblock %} {% block listing %} <div class="flex flex-col items-center p-10">
+  <h1 class="p-10">PEOPLE LIST:</h1>
+ <ul>
+    {% for person in persons %}
+        <li>
+            <a href="{% url "people:person" slug=person.slug %}">
+               {{ person.name }}, {{ person.birth }}
+            </a>
+        </li>
+    {% endfor %}
+ </ul>
+ <h2 class="p-10">USER LIST:</h2>
+ {% for user in users %}
+<div class="items-center flex flex-col">
+  <h2>  {{ user.name }}</h2>
+  <p class="mb-4">{{ user.mail }}</p>
+  <img src="{{ user.propic.url }}" alt="{{ user.name }}" width="150" />
+</div>
+{% endfor %}
+{% endblock %}
