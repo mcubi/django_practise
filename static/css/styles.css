@@ -1,0 +1,14 @@
+body {
+  background-color: darkslategrey;
+}
+h1 {
+  color: rgb(3, 250, 209);
+  text-align: center;
+}
+
+#imageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
