@@ -15,14 +15,27 @@
     <nav
       class="bg-linear-to-r from-zinc-900 to-gray-500 shadow p-1 flex space-x-4 text-indigo-100 pl-12 space-x-8"
     >
+      <!-- ### PRINCIPAL URLS: ### -->
+
+      <!-- LOGGED USERS -->
       <a href="{% url 'homepage' %}">Home</a>
+      {% if user.is_authenticated %}
       <a href="{% url 'projecthub:show_hub' %}">Project Hub</a>
-      <a href="{% url 'users:home' %}">Register</a>
-      <a href="{% url 'users:login' %}">Login</a>
+      <a href="{% url 'users:personal_page' %}">My Projects</a>
+      <a href="{% url 'users:login' %}">Change user?</a>
       <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
         <button>Logout</button>
       </form>
+
+      <!-- ANONYMOUS USERS -->
+      {% else %}
+      <a href="{% url 'users:login' %}">Login</a>
+      <a href="{% url 'users:home' %}">Register</a>
+      {% endif %}
+
+      <!--DEUD: PROJECT HUB DEDICATED VARIABLE FOR REDIRECT TO CREATION! -->
+      {% block hubnav %} {% endblock %}
     </nav>
 
     {% block content %}
@@ -40,10 +53,13 @@
         alt="CodeWalkers Logo"
         width="300"
       />
+      {% if user.is_authenticated %}
     </div>
-    <div>
-      <p>tu usuario: {{ user.username }}</p>
+    <div
+      class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center text-center"
+    >
+      <p class="text-lg italic">"Welocome, {{ user.username }}"</p>
     </div>
-    {% endblock %}
+    {% endif %} {% endblock %}
   </body>
 </html>

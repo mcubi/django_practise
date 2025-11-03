@@ -9,6 +9,8 @@ class Project(models.Model):
     propic = models.ImageField(default='default_project.png', blank=True) # DEUD: This should be configured through User class !
     slug = models.SlugField(unique=True) # DEUD: This should be auto-generated from the name field !
     
+    # DEUD: ADD THE FOLLOWING FIELDS: ['repository_url', 'live_demo_url', 'technologies_used']
+    
     # DEUD: Add colaborators and sponsor fields later !
 
     def __str__(self):

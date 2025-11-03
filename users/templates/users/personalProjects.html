@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block title %}My Projects{% endblock %}
+<!-- # I hate that the Auto-indent I didn't locate already splits my { blocks } -->
+{% block content %}
+<div
+  class="min-h-screen bg-gradient-to-br from-blue-200 to-zinc-800 flex flex-col items-center py-12 px-4"
+>
+  <!-- New project's form -->
+  <div
+    class="w-full max-w-2xl bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white/20"
+  >
+    <h1 class="text-4xl font-serif text-white mb-6 text-center">
+      Create a new project
+    </h1>
+
+    <form
+      action="{% url 'users:personal_page' %}"
+      method="post"
+      enctype="multipart/form-data"
+      class="space-y-6"
+    >
+      {% csrf_token %}
+      <div class="text-white space-y-4">
+        {{ form.as_p }} {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}" />
+        {% endif %}
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="px-8 py-2 bg-slate-700 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+        >
+          Submit Project
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Project list -->
+  <div
+    class="w-full max-w-3xl bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20"
+  >
+    <h2 class="text-3xl font-serif text-white mb-6 text-center">
+      Projects you have created
+    </h2>
+
+    <ul class="space-y-4">
+      {% for project in user_projects %}
+      <li
+        class="bg-white/20 rounded-lg p-4 text-white shadow-md hover:bg-white/30 transition"
+      >
+        <a href="{% url 'projecthub:show_project' project.slug %}"
+          ><h3 class="text-xl font-semibold">{{ project.name }}</h3></a
+        >
+        <p class="text-sm text-gray-200 mt-1">
+          {{ project.description|truncatewords:25 }}
+        </p>
+      </li>
+      {% empty %}
+      <li class="text-center text-gray-200 italic">
+        You haven't created any projects yet.
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
