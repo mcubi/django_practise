@@ -17,6 +17,12 @@
     >
       <a href="{% url 'homepage' %}">Home</a>
       <a href="{% url 'projecthub:show_hub' %}">Project Hub</a>
+      <a href="{% url 'users:home' %}">Register</a>
+      <a href="{% url 'users:login' %}">Login</a>
+      <form action="{% url 'users:logout' %}" method="post">
+        {% csrf_token %}
+        <button>Logout</button>
+      </form>
     </nav>
 
     {% block content %}
@@ -34,6 +40,9 @@
         alt="CodeWalkers Logo"
         width="300"
       />
+    </div>
+    <div>
+      <p>tu usuario: {{ user.username }}</p>
     </div>
     {% endblock %}
   </body>

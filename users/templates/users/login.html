@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!-- prettier-ignore -->
+{% block title %}Register{% endblock %}
+<!-- prettier-ignore -->
+{% block content %}
+<div
+  class="min-h-screen flex flex col items-center justify-center bg-gradient-to-br from-blue-200 to-zinc-800"
+>
+  <div>
+    <h1 class="text-5xl font-[Times_New_Roman] text-white">Login form!</h1>
+    <br />
+    <form action="/users/login/" method="post" class="space-y-6 pt-8">
+      {% csrf_token %}
+      <!-- prettier ignore -->
+      <div class="text-white p-7">{{ form }}</div>
+
+      <button
+        type="submit"
+        class="mt-4 px-6 py-2 bg-slate-600 text-white font-semibold rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500"
+      >
+        Submit form!
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
