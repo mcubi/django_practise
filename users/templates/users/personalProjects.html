@@ -20,7 +20,9 @@
     >
       {% csrf_token %}
       <div class="text-white space-y-4">
-        {{ form.as_p }} {% if request.GET.next %}
+        {{ form.as_p }}
+        <!--# DEUD: emmm not necessary - delete after def #-->
+        {% if request.GET.next %}
         <input type="hidden" name="next" value="{{ request.GET.next }}" />
         {% endif %}
       </div>

@@ -12,6 +12,7 @@
       <a href="{% url 'projecthub:show_project' project.slug %}">
         <h2 class="text-3xl font-bold mb-4">{{ project.name }}</h2>
         <p class="text-gray-400 italic">Created: {{ project.start_date }}</p>
+        <p>owner: {{project.principal_owner}}</p>
     </li>
     {% empty %}
     <li class="bg-gray-800 rounded-xl shadow-lg p-6 text-center">

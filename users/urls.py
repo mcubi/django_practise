@@ -9,3 +9,5 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('my_projects/', views.personal_projects, name='personal_page'),
 ]
+
+#ooo marquiñusss :D

@@ -255,41 +255,8 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
-  .mb-10 {
-    margin-bottom: calc(var(--spacing) * 10);
-  }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
-  }
-  .ml-10 {
-    margin-left: calc(var(--spacing) * 10);
-  }
-  .ml-100 {
-    margin-left: calc(var(--spacing) * 100);
-  }
-  .ml-140 {
-    margin-left: calc(var(--spacing) * 140);
-  }
-  .ml-170 {
-    margin-left: calc(var(--spacing) * 170);
-  }
-  .ml-200 {
-    margin-left: calc(var(--spacing) * 200);
-  }
-  .ml-300 {
-    margin-left: calc(var(--spacing) * 300);
-  }
-  .ml-315 {
-    margin-left: calc(var(--spacing) * 315);
-  }
-  .ml-320 {
-    margin-left: calc(var(--spacing) * 320);
-  }
-  .ml-400 {
-    margin-left: calc(var(--spacing) * 400);
-  }
-  .ml-900 {
-    margin-left: calc(var(--spacing) * 900);
   }
   .block {
     display: block;
