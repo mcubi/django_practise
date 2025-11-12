@@ -1,0 +1,45 @@
+{% extends "base.html" %}{% block title %}Code Walkers{% endblock %}
+<!--content-->
+{% block content %}
+<h2>Room: {{ game.room_name }}</h2>
+<p>User: {{ request.user.username }}</p>
+
+{% if game.state == "won" %}
+<h3>Winner: {{ game.winner }}</h3>
+{% elif game.state == "tie" %}
+<h3>It's a tie!</h3>
+{% else %}
+<h3>Turn: {{ game.active_player }}</h3>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <div style="display: grid; grid-template-columns: repeat(3, 80px); gap: 5px">
+    {% for cell in board_cells %}
+    <button
+      name="cell"
+      value="{{ forloop.counter0 }}"
+      style="height: 80px; font-size: 2em"
+      {%
+      if
+      request.user
+      !="game.owner"
+      or
+      cell
+      !="_"
+      or
+      game.state
+      !="active"
+      %}disabled{%
+      endif
+      %}
+    >
+      {% if cell == "_" %}⬜{% elif cell == "X" %}❌{% else %}⭕{% endif %}
+    </button>
+    {% endfor %}
+  </div>
+</form>
+
+{% if request.user == game.owner %}
+<a href="?delete=1">🗑️ Close Room</a>
+{% endif %} {% endblock %}

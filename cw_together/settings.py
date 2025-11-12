@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'theme',
     'users',
+    'games_ready_to_delete'
 ]
 
 MIDDLEWARE = [

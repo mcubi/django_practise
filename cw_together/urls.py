@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('projecthub/', include('projecthub.urls')),
     path('users/', include('users.urls')),
+    path('games_ready_to_delete/', include('games_ready_to_delete.urls')),
     path('__reload__/', include('django_browser_reload.urls')),
 ]
 

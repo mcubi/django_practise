@@ -23,6 +23,8 @@
       <a href="{% url 'projecthub:show_hub' %}">Project Hub</a>
       <a href="{% url 'users:personal_page' %}">My Projects</a>
       <a href="{% url 'users:login' %}">Change user?</a>
+      <!-- # D E L E T E :: A F T E R -->
+      <a href="{% url 'gamesX:allgames' %}">Games</a>
       <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
         <button>Logout</button>
