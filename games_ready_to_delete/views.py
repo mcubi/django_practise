@@ -8,9 +8,7 @@ from .utils import check_winner
 
 @login_required
 def show_games(request):
-    """
-    Muestra la lista de partidas disponibles y permite crear una nueva.
-    """
+   
     games = GameXO.objects.all()
 
     if request.method == "POST":
@@ -29,9 +27,7 @@ def show_games(request):
 
 @login_required
 def show_active_game(request, pk):
-    """
-    Muestra el detalle de una partida (tablero) y permite hacer jugadas.
-    """
+    
     game = get_object_or_404(GameXO, pk=pk)
     board = list(game.board)
 
